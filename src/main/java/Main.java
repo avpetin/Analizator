@@ -1,9 +1,14 @@
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class Main {
     public static Random random = new Random();
 
     public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> queue1 = new ArrayBlockingQueue<>(100);
+        BlockingQueue<String> queue2 = new ArrayBlockingQueue<>(100);
+        BlockingQueue<String> queue3 = new ArrayBlockingQueue<>(100);
         String[] texts = new String[10_000];
 
         Thread[] threads = new Thread[4];
@@ -14,17 +19,7 @@ public class Main {
         });
 
         threads[1] = new Thread(() -> {
-            for (String text : texts) {
-                int j;
-                for (j = 1; j < text.length(); j++) {
-                    if (text.charAt(j) != text.charAt(0)) {
-                        break;
-                    }
-                }
-                if (j == text.length()) {
-                    incrementCounts(text.length());
-                }
-            }
+
         });
 
         threads[2] = new Thread(() -> {
