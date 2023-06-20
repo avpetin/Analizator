@@ -53,7 +53,7 @@ public class Main {
         });
 
         threads[2] = new Thread(() -> {
-            while (count.get() < texts.length || queue1.size() > 0) {
+            while (count.get() < texts.length || queue2.size() > 0) {
                 for (int i = 0; i < queue2.size(); i++) {
                     try {
                         String s = queue2.take();
@@ -72,7 +72,7 @@ public class Main {
         });
 
         threads[3] = new Thread(() -> {
-            while (count.get() < texts.length || queue1.size() > 0) {
+            while (count.get() < texts.length || queue3.size() > 0) {
                 for (int i = 0; i < queue3.size(); i++) {
                     try {
                         String s = queue3.take();
